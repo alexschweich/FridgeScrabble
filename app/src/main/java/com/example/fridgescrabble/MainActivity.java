@@ -163,10 +163,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        int max_letters = 7;
+        if (all_letters.size() < max_letters) {
+            max_letters = all_letters.size();
+        }
+        if (max_letters == 0) {
+            Toast.makeText(getApplicationContext(), "No letters remaining. Please start a new game!", Toast.LENGTH_LONG).show();
+            return;
+        }
         Random rand = new Random();
         ArrayList<Integer> usedNumbers = new ArrayList<>();
         StringBuilder selected_letters = new StringBuilder();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < max_letters; i++) {
             Integer random = rand.nextInt(all_letters.size());
             boolean keepTrying = true;
             while (keepTrying) {
